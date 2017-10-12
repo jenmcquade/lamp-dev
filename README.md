@@ -10,9 +10,14 @@ Docker Compose setup for initiating a LAMP environment with XDEBUG enabled
 `"localSourceRoot": "localSourceRoot": "{YOUR PROJECT FOLDER ROOT}\\src"`
 1. Copy your PHP project files into the _src_ folder
 1. In a terminal, pointed at the root lamp-dev project folder, run `docker-compose up -d`. This will run the containers in the background. You can use a UI like Kitematic to view the container logs. 
-1. Begin your debugger and visit http://localhost:8888/{Your_folder_under_./src}/
+1. Begin your debugger and visit http://localhost:8888/{Your_folder_under_./src}
 
 ### Services
 1. MariaDB (latest, from base image)
-1. PHP 7.1.6 (based on docker pull wodby/drupal-php)
-1. Apache 2.4.25 (based on wodby/drupal-apache:2.4-1.0.0)
+1. PHP 7.1.6 (based on docker pull wodby/drupal-php).  Php.ini config nder /usr/local/etc/php
+1. Apache 2.4.25 (based on wodby/drupal-apache:2.4-1.0.0).  Httpd config uder /usr/local/apache2
+
+### Requirements
+1. Docker: https://docs.docker.com/engine/installation/
+2. Visual Studio Code (for debugging): https://code.visualstudio.com/docs/setup/setup-overview
+
