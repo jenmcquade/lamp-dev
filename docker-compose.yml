@@ -1,0 +1,70 @@
+version: '3'
+
+services:
+    
+  db:
+    container_name: lamp-dev_db
+    environment:
+     MYSQL_ROOT_PASSWORD: root
+     MYSQL_DATABASE: mysql_dev
+     MYSQL_PASSWORD: root
+     MYSQL_USER: root
+    image: mariadb
+    ports:
+     - 3366:3306
+    restart: always
+    volumes:
+     - data:/var/lib/mysql
+
+  php:  
+    container_name: lamp-dev_php
+    image: bistormllc/php
+    environment:
+      PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: root
+      DB_NAME: mysql_dev
+      DB_DRIVER: mysql
+      PHP_XDEBUG_DEFAULT_ENABLE: 1
+      PHP_XDEBUG: 1
+      PHP_XDEBUG_IDEKEY: "vs-code"
+      PHP_XDEBUG_REMOTE_HANDLER: "dbgp"
+      PHP_XDEBUG_DEFAULT_ENABLE: 1
+      PHP_XDEBUG_REMOTE_ENABLE: 1
+      PHP_XDEBUG_REMOTE_AUTOSTART: 1
+      PHP_XDEBUG_REMOTE_CONNECT_BACK: 0  # This is needed to respect remote.host setting bellow
+      PHP_XDEBUG_REMOTE_HOST: "X.X.X.X" # Replace with your host IP address 
+      PHP_XDEBUG_REMOTE_LOG: "/var/log/xdebug.log"
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - 9001:9000
+    depends_on:
+      - apache
+
+  apache:
+    container_name: lamp-dev_apache
+    image: bistormllc/apache
+    environment:
+      APACHE_LOG_LEVEL: debug
+      APACHE_BACKEND_HOST: php
+      APACHE_SERVER_ROOT: /var/www/html
+    volumes:
+      - ./src:/var/www/html
+    ports:
+      - 8888:80
+
+  composer:
+    container_name: lamp-dev_composer
+    image: composer
+    volumes:
+      - ./src:/var/www/html
+    depends_on:
+      - php
+
+
+volumes:
+    data:
+
+
