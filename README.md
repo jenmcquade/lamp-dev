@@ -16,9 +16,15 @@ Docker Compose setup for initiating a LAMP environment with XDEBUG enabled
 1. MariaDB (latest, from base image). *This maps your host's port 3366 to the internal port 3306*
 1. PHP 7.1.6 (based on docker wodby/drupal-php).  Php.ini config under */usr/local/etc/php*
 1. Apache 2.4.25 (based on docker wodby/drupal-apache:2.4-1.0.0).  Httpd config uder /usr/local/apache2.  *This maps your host's port 8888 to the internal port 80*
-1. Composer. See https://hub.docker.com/_/composer/ for details about how to use Composer in Docker.
+
+#### Composer
+Composer is installed as an executable inside of the PHP docker image.  How is how to run Composer:
+1. run `docker ps` to see a list of open Docker containers.  Find the container ID of your open PHP container with the image *bistormllc/php*.  Copy the container ID.  
+1. run `docker exec -ti bash {CONTAINER ID}` to launch an interactive session in the PHP Docker container.
+1. `cd /var/www/html` to get to the root project folder.
+1. Composer can be run by executing `php bin/composer`
 
 ### Requirements
 1. Docker: https://docs.docker.com/engine/installation/
-2. Visual Studio Code (for debugging): https://code.visualstudio.com/docs/setup/setup-overview
+1. Visual Studio Code (for debugging): https://code.visualstudio.com/docs/setup/setup-overview
 
