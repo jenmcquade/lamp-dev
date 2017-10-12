@@ -16,6 +16,7 @@ Docker Compose setup for initiating a LAMP environment with XDEBUG enabled
 1. MariaDB (latest, from base image). *This maps your host's port 3366 to the internal port 3306*
 1. PHP 7.1.6 (based on docker wodby/drupal-php).  Php.ini config under */usr/local/etc/php*
 1. Apache 2.4.25 (based on docker wodby/drupal-apache:2.4-1.0.0).  Httpd config uder /usr/local/apache2.  *This maps your host's port 8888 to the internal port 80*
+1. Composer. See https://hub.docker.com/_/composer/ for details about how to use Composer in Docker.
 
 ### Requirements
 1. Docker: https://docs.docker.com/engine/installation/
