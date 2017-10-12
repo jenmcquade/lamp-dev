@@ -13,9 +13,9 @@ Docker Compose setup for initiating a LAMP environment with XDEBUG enabled
 1. Begin your debugger and visit http://localhost:8888/{Your_folder_under_./src}
 
 ### Services
-1. MariaDB (latest, from base image)
+1. MariaDB (latest, from base image). *This maps your host's port 3366 to the internal port 3306*
 1. PHP 7.1.6 (based on docker pull wodby/drupal-php).  Php.ini config nder /usr/local/etc/php
-1. Apache 2.4.25 (based on wodby/drupal-apache:2.4-1.0.0).  Httpd config uder /usr/local/apache2
+1. Apache 2.4.25 (based on wodby/drupal-apache:2.4-1.0.0).  Httpd config uder /usr/local/apache2.  *This maps your host's port 8888 to the internal port 80*
 
 ### Requirements
 1. Docker: https://docs.docker.com/engine/installation/
