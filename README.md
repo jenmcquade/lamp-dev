@@ -9,7 +9,7 @@ Docker Compose setup for initiating a LAMP environment with XDEBUG enabled
 1. _[Optional]_ If you have Visual Studio Code installed, Modify line 14 of .vscode/launch.json to the full directory path of the project's _src_ folder
 `"localSourceRoot": "localSourceRoot": "{YOUR PROJECT FOLDER ROOT}\\src"`
 1. Copy your PHP project files into the _src_ folder
-1. In a terminal, pointed at the root project folder, run `docker-compose up -d`. This will run the containers in the background. You can use a UI like Kitematic to view the container logs. 
+1. In a terminal, pointed at the root lamp-dev project folder, run `docker-compose up -d`. This will run the containers in the background. You can use a UI like Kitematic to view the container logs. 
 1. Begin your debugger and visit http://localhost:8888/{Your_folder_under_./src}/
 
 ### Services
