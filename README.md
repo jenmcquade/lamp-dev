@@ -18,7 +18,7 @@ Docker Compose setup for initiating a LAMP environment with XDEBUG enabled
 1. Apache 2.4.25 (based on docker wodby/drupal-apache:2.4-1.0.0).  Httpd config uder /usr/local/apache2.  *This maps your host's port 8888 to the internal port 80*.
 
 #### Composer
-Composer is installed as an executable inside of the PHP docker image.  How is how to run Composer:
+Composer is installed as an executable inside of the PHP docker image.  Here is how to run Composer:
 1. run `docker ps` to see a list of open Docker containers.  Find the container ID of your open PHP container with the image *bistormllc/php*.  Copy the container ID.  
 1. run `docker exec -ti bash {CONTAINER ID}` to launch an interactive session in the PHP Docker container.
 1. `cd /var/www/html` to get to the root project folder.
