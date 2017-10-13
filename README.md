@@ -24,6 +24,13 @@ Composer is installed as an executable inside of the PHP docker image.  Here is 
 1. `cd /var/www/html` to get to the root project folder.
 1. Composer can be run by executing `php bin/composer`
 
+#### Zend MVC Skeleton App comes Preinstalled
+To get you up and running with MVC, a composer.json configuration file is included in the *src* folder.  The Zend Framework and Propel should be installed using Composer in order to write full-fledged MVC applications.  
+1. run `docker ps` to see a list of open Docker containers.  Find the container ID of your open PHP container with the image *bistormllc/php*.  Copy the container ID.  
+1. run `docker exec -ti bash {CONTAINER ID}` to launch an interactive session in the PHP Docker container.
+1. `cd /var/www/html/src` to get to project sources folder, containing composer.json.
+1. run `php bin/composer install`
+
 ### Requirements
 1. Docker: https://docs.docker.com/engine/installation/
 1. Visual Studio Code (for debugging): https://code.visualstudio.com/docs/setup/setup-overview
