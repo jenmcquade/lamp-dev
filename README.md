@@ -1,5 +1,5 @@
 # lamp-dev
-Docker Compose setup for initiating a LAMP environment with XDEBUG enabled
+Docker Compose setup for initiating a LAMP environment with XDEBUG enabled.  Comes pre-configured for Zend and Propel for MVC development.
 
 ### To create a LAMP environment with XDebug enabled, follow these steps
 1. Clone this project into your working directory
