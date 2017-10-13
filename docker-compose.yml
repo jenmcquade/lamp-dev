@@ -55,14 +55,6 @@ services:
     ports:
       - 8888:80
 
-  composer:
-    container_name: lamp-dev_composer
-    image: composer
-    volumes:
-      - ./src:/var/www/html
-    depends_on:
-      - php
-
 
 volumes:
     data:
