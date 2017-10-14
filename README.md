@@ -1,6 +1,11 @@
 # lamp-dev
 Docker Compose setup for initiating a LAMP environment with XDEBUG enabled.  Comes pre-configured for Zend and Propel for MVC development.
 
+## Exposed ports
+1. MariaDB (MySQL) exposes port *3366* on your host machine and maps internally to port *3306*.
+1. Apache exposes port *8888* on your host machine and maps internally to port *80*.
+1. Adminer exposes port *8889* on your host machine and maps internally to port *8080*.
+
 ### To create a LAMP environment with XDebug enabled, follow these steps
 1. Clone this project into your working directory
 `git clone https://github.com/jenmcquade/lamp-dev.git`
@@ -13,9 +18,10 @@ Docker Compose setup for initiating a LAMP environment with XDEBUG enabled.  Com
 1. Begin your debugger and visit http://localhost:8888/{Your_folder_under_./src}
 
 ### Services
-1. MariaDB (latest, from base image). *This maps your host's port 3366 to the internal port 3306*.
+1. MariaDB (latest, from base image). See _docker-compose.yml_ for login credentials. *This maps your host's port 3366 to the internal port 3306*.
 1. PHP 7.1.6 (based on docker wodby/drupal-php).  Php.ini config under */usr/local/etc/php*
 1. Apache 2.4.25 (based on docker wodby/drupal-apache:2.4-1.0.0).  Httpd config uder /usr/local/apache2.  *This maps your host's port 8888 to the internal port 80*.
+1. Adminer (latest, from base image). *This maps your host's port 8888 to the internal port 80*.
 
 #### Composer
 Composer is installed globally as an executable inside of the PHP docker image.  Here is how to run Composer:
