@@ -1,5 +1,5 @@
 # lamp-dev
-Docker Compose setup for initiating a LAMP environment with XDEBUG enabled
+Docker Compose setup for initiating a LAMP environment with XDEBUG enabled.  Comes pre-configured for Zend and Propel for MVC development.
 
 ### To create a LAMP environment with XDebug enabled, follow these steps
 1. Clone this project into your working directory
@@ -33,7 +33,7 @@ To get you up and running with MVC, a composer.json configuration file is includ
 1. run `php bin/composer install`
 ##### Running the Zend Framekwork Skeleton App
 1. `cd /var/www/html/zend_app` to enter the Zend Skelton app directory
-1. run `php ../bin/composer install` to install minimal or optional dependencies.
+1. run `php ../bin/composer install` to install vendor dependencies.
 1. Open http://localhost:8888/zend_app/public
 
 ### Requirements
