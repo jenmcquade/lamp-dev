@@ -18,11 +18,11 @@ Docker Compose setup for initiating a LAMP environment with XDEBUG enabled.  Com
 1. Apache 2.4.25 (based on docker wodby/drupal-apache:2.4-1.0.0).  Httpd config uder /usr/local/apache2.  *This maps your host's port 8888 to the internal port 80*.
 
 #### Composer
-Composer is installed as an executable inside of the PHP docker image.  Here is how to run Composer:
+Composer is installed globally as an executable inside of the PHP docker image.  Here is how to run Composer:
 1. run `docker ps` to see a list of open Docker containers.  Find the container ID of your open PHP container with the image *bistormllc/php*.  Copy the container ID.  
 1. run `docker exec -ti bash {CONTAINER ID}` to launch an interactive session in the PHP Docker container.
 1. `cd /var/www/html` to get to the root project folder.
-1. Composer can be run by executing `php bin/composer`
+1. run`composer install` to install the Zend Framework and Propel ORM.
 
 #### Zend MVC Skeleton App comes preinstalled
 To get you up and running with MVC, a composer.json configuration file is included in the *src* folder.  The Zend Framework and Propel should be installed using Composer in order to write full-fledged MVC applications. 
@@ -30,11 +30,17 @@ To get you up and running with MVC, a composer.json configuration file is includ
 1. run `docker ps` to see a list of open Docker containers.  Find the container ID of your open PHP container with the image *bistormllc/php*.  Copy the container ID.  
 1. run `docker exec -ti bash {CONTAINER ID}` to launch an interactive session in the PHP Docker container.
 1. `cd /var/www/html` to get to project sources folder, containing composer.json.
-1. run `php bin/composer install`
+1. run `ccomposer install`
 ##### Running the Zend Framekwork Skeleton App
 1. `cd /var/www/html/zend_app` to enter the Zend Skelton app directory
-1. run `php ../bin/composer install` to install vendor dependencies.
+1. run `composer install` to install vendor dependencies.
 1. Open http://localhost:8888/zend_app/public
+
+#### Propel ORM for model development comes preconfigured
+You can use Propel both within the _src_ project directory and inside of the Zend MVC Skeleton App.  It is available globally after running `composer install` in the _src_ project directory or locally after running `composer install` inside the _src/zend_app_ directory.
+1. `cd /var/www/html/zend_app` to enter the Zend Skeleton app directory
+1. run `propel init` to initialize schema and inheritance classes to manage CRUD operations.
+1. Each time you will update your schema, you should run `propel sql:build` and `propel sql:insert`
 
 ### Requirements
 1. Docker: https://docs.docker.com/engine/installation/
