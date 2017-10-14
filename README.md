@@ -32,15 +32,16 @@ To get you up and running with MVC, a composer.json configuration file is includ
 1. `cd /var/www/html` to get to project sources folder, containing composer.json.
 1. run `ccomposer install`
 ##### Running the Zend Framekwork Skeleton App
-1. `cd /var/www/html/zend_app` to enter the Zend Skelton app directory
+1. `cd /var/www/html/zend_app` to enter the Zend Skelton app directory.
 1. run `composer install` to install vendor dependencies.
 1. Open http://localhost:8888/zend_app/public
 
 #### Propel ORM for model development comes preconfigured
 You can use Propel both within the _src_ project directory and inside of the Zend MVC Skeleton App.  It is available globally after running `composer install` in the _src_ project directory or locally after running `composer install` inside the _src/zend_app_ directory.
-1. `cd /var/www/html/zend_app` to enter the Zend Skeleton app directory
+1. `cd /var/www/html/zend_app` to enter the Zend Skeleton app directory.
+1. run `composer install` to install project dependencies.
 1. run `propel init` to initialize schema and inheritance classes to manage CRUD operations.
-1. Each time you will update your schema, you should run `propel sql:build` and `propel sql:insert`
+1. Each time you will update your schema, you should run `propel sql:build` and `propel sql:insert`.
 
 ### Requirements
 1. Docker: https://docs.docker.com/engine/installation/
