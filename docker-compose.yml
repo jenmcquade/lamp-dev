@@ -33,7 +33,7 @@ services:
       PHP_XDEBUG_REMOTE_ENABLE: 1
       PHP_XDEBUG_REMOTE_AUTOSTART: 1
       PHP_XDEBUG_REMOTE_CONNECT_BACK: 0  # This is needed to respect remote.host setting bellow
-      PHP_XDEBUG_REMOTE_HOST: "X.X.X.X" # Replace with your host IP address 
+      PHP_XDEBUG_REMOTE_HOST: "XXX.XXX.XXX.XXX" # Replace with your host IP address 
       PHP_XDEBUG_REMOTE_LOG: "/var/log/xdebug.log"
     volumes:
       - ./src:/var/www/html
@@ -48,18 +48,19 @@ services:
     environment:
       APACHE_LOG_LEVEL: debug
       APACHE_BACKEND_HOST: php
-      APACHE_SERVER_ROOT: /var/www/html
+      APACHE_SERVER_ROOT: /var/www/html/zend_app/public
     volumes:
       - ./src:/var/www/html
     ports:
-      - 8888:80
+      - 8080:80
+      - 8081:81
 
   adminer:
     container_name: lamp-dev_adminer
     image: adminer
     restart: always
     ports:
-      - 8889:8080
+      - 8888:8080
 
 volumes:
     data:
