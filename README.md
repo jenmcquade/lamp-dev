@@ -19,7 +19,7 @@ Docker Compose setup for initiating a LAMP environment with XDEBUG enabled.  Com
 1. The Zend MVC Skeleton with Propel can be visited via http://localhost:8080
 
 ### Services
-1. MariaDB (latest, from base image). See _docker-compose.yml_ for login credentials. *This maps your host's port 3366 to the internal port 3306*.
+1. MariaDB (latest, from base image). See _docker-compose.yml_ for login credentials. *This maps your host's port 3366 to the internal port 3306*.  You can then access the database outside of the Docker virtual network, for example, in MySQL workbench.
 1. PHP 7.1.6 (based on docker wodby/drupal-php).  Php.ini config under */usr/local/etc/php*
 1. Apache 2.4.25 (based on docker wodby/drupal-apache:2.4-1.0.0).  Httpd config uder /usr/local/apache2.  *This maps your host's port 8080 to the internal port 80 and host port 8081 to internal port 81.
 1. Adminer (latest, from base image). *This maps your host's port 8888 to the internal port 80*.
