@@ -7,8 +7,8 @@ services:
     environment:
      MYSQL_ROOT_PASSWORD: root
      MYSQL_DATABASE: mysql_dev
-     MYSQL_PASSWORD: root
-     MYSQL_USER: root
+     MYSQL_PASSWORD: mysql_dev
+     MYSQL_USER: mysql_dev
     image: mariadb
     ports:
      - 3366:3306
@@ -20,10 +20,9 @@ services:
     container_name: lamp-dev_php
     image: bistormllc/php
     environment:
-      PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
       DB_HOST: db
-      DB_USER: root
-      DB_PASSWORD: root
+      DB_USER: mysql_dev
+      DB_PASSWORD: mysql_dev
       DB_NAME: mysql_dev
       DB_DRIVER: mysql
       PHP_XDEBUG_DEFAULT_ENABLE: 1
@@ -55,6 +54,12 @@ services:
     ports:
       - 8888:80
 
+  adminer:
+    container_name: lamp-dev_adminer
+    image: adminer
+    restart: always
+    ports:
+      - 8889:8080
 
 volumes:
     data:
