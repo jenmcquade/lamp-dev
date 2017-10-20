@@ -1,13 +1,13 @@
 <?php
 
-namespace Model\Theme\Base;
+namespace Application\Model\Theme\Base;
 
 use \Exception;
 use \PDO;
-use Model\Note\Note;
-use Model\Theme\Theme as ChildTheme;
-use Model\Theme\ThemeQuery as ChildThemeQuery;
-use Model\Theme\Map\ThemeTableMap;
+use Application\Model\Note\Note;
+use Application\Model\Theme\Theme as ChildTheme;
+use Application\Model\Theme\ThemeQuery as ChildThemeQuery;
+use Application\Model\Theme\Map\ThemeTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -53,7 +53,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildThemeQuery rightJoinWithNote() Adds a RIGHT JOIN clause and with to the query using the Note relation
  * @method     ChildThemeQuery innerJoinWithNote() Adds a INNER JOIN clause and with to the query using the Note relation
  *
- * @method     \Model\Note\NoteQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
+ * @method     \Application\Model\Note\NoteQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
  * @method     ChildTheme findOne(ConnectionInterface $con = null) Return the first ChildTheme matching the query
  * @method     ChildTheme findOneOrCreate(ConnectionInterface $con = null) Return the first ChildTheme matching the query, or a new ChildTheme object populated from the query conditions when no match is found
@@ -90,13 +90,13 @@ abstract class ThemeQuery extends ModelCriteria
     protected $entityNotFoundExceptionClass = '\\Propel\\Runtime\\Exception\\EntityNotFoundException';
 
     /**
-     * Initializes internal state of \Model\Theme\Base\ThemeQuery object.
+     * Initializes internal state of \Application\Model\Theme\Base\ThemeQuery object.
      *
      * @param     string $dbName The database name
      * @param     string $modelName The phpName of a model, e.g. 'Book'
      * @param     string $modelAlias The alias for the model in this query, e.g. 'b'
      */
-    public function __construct($dbName = 'default', $modelName = '\\Model\\Theme\\Theme', $modelAlias = null)
+    public function __construct($dbName = 'default', $modelName = '\\Application\\Model\\Theme\\Theme', $modelAlias = null)
     {
         parent::__construct($dbName, $modelName, $modelAlias);
     }
@@ -469,16 +469,16 @@ abstract class ThemeQuery extends ModelCriteria
     }
 
     /**
-     * Filter the query by a related \Model\Note\Note object
+     * Filter the query by a related \Application\Model\Note\Note object
      *
-     * @param \Model\Note\Note|ObjectCollection $note the related object to use as filter
+     * @param \Application\Model\Note\Note|ObjectCollection $note the related object to use as filter
      * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return ChildThemeQuery The current query, for fluid interface
      */
     public function filterByNote($note, $comparison = null)
     {
-        if ($note instanceof \Model\Note\Note) {
+        if ($note instanceof \Application\Model\Note\Note) {
             return $this
                 ->addUsingAlias(ThemeTableMap::COL_ID, $note->getThemeId(), $comparison);
         } elseif ($note instanceof ObjectCollection) {
@@ -487,7 +487,7 @@ abstract class ThemeQuery extends ModelCriteria
                 ->filterByPrimaryKeys($note->getPrimaryKeys())
                 ->endUse();
         } else {
-            throw new PropelException('filterByNote() only accepts arguments of type \Model\Note\Note or Collection');
+            throw new PropelException('filterByNote() only accepts arguments of type \Application\Model\Note\Note or Collection');
         }
     }
 
@@ -532,13 +532,13 @@ abstract class ThemeQuery extends ModelCriteria
      *                                   to be used as main alias in the secondary query
      * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
      *
-     * @return \Model\Note\NoteQuery A secondary query class using the current class as primary query
+     * @return \Application\Model\Note\NoteQuery A secondary query class using the current class as primary query
      */
     public function useNoteQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
     {
         return $this
             ->joinNote($relationAlias, $joinType)
-            ->useQuery($relationAlias ? $relationAlias : 'Note', '\Model\Note\NoteQuery');
+            ->useQuery($relationAlias ? $relationAlias : 'Note', '\Application\Model\Note\NoteQuery');
     }
 
     /**

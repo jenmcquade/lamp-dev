@@ -1,14 +1,14 @@
 <?php
 
-namespace Model\Note\Base;
+namespace Application\Model\Note\Base;
 
 use \Exception;
 use \PDO;
-use Model\Note\Note as ChildNote;
-use Model\Note\NoteQuery as ChildNoteQuery;
-use Model\Note\Map\NoteTableMap;
-use Model\Position\Position;
-use Model\Theme\Theme;
+use Application\Model\Note\Note as ChildNote;
+use Application\Model\Note\NoteQuery as ChildNoteQuery;
+use Application\Model\Note\Map\NoteTableMap;
+use Application\Model\Position\Position;
+use Application\Model\Theme\Theme;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -64,7 +64,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildNoteQuery rightJoinWithPosition() Adds a RIGHT JOIN clause and with to the query using the Position relation
  * @method     ChildNoteQuery innerJoinWithPosition() Adds a INNER JOIN clause and with to the query using the Position relation
  *
- * @method     \Model\Theme\ThemeQuery|\Model\Position\PositionQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
+ * @method     \Application\Model\Theme\ThemeQuery|\Application\Model\Position\PositionQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
  * @method     ChildNote findOne(ConnectionInterface $con = null) Return the first ChildNote matching the query
  * @method     ChildNote findOneOrCreate(ConnectionInterface $con = null) Return the first ChildNote matching the query, or a new ChildNote object populated from the query conditions when no match is found
@@ -101,13 +101,13 @@ abstract class NoteQuery extends ModelCriteria
     protected $entityNotFoundExceptionClass = '\\Propel\\Runtime\\Exception\\EntityNotFoundException';
 
     /**
-     * Initializes internal state of \Model\Note\Base\NoteQuery object.
+     * Initializes internal state of \Application\Model\Note\Base\NoteQuery object.
      *
      * @param     string $dbName The database name
      * @param     string $modelName The phpName of a model, e.g. 'Book'
      * @param     string $modelAlias The alias for the model in this query, e.g. 'b'
      */
-    public function __construct($dbName = 'default', $modelName = '\\Model\\Note\\Note', $modelAlias = null)
+    public function __construct($dbName = 'default', $modelName = '\\Application\\Model\\Note\\Note', $modelAlias = null)
     {
         parent::__construct($dbName, $modelName, $modelAlias);
     }
@@ -502,9 +502,9 @@ abstract class NoteQuery extends ModelCriteria
     }
 
     /**
-     * Filter the query by a related \Model\Theme\Theme object
+     * Filter the query by a related \Application\Model\Theme\Theme object
      *
-     * @param \Model\Theme\Theme|ObjectCollection $theme The related object(s) to use as filter
+     * @param \Application\Model\Theme\Theme|ObjectCollection $theme The related object(s) to use as filter
      * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @throws \Propel\Runtime\Exception\PropelException
@@ -513,7 +513,7 @@ abstract class NoteQuery extends ModelCriteria
      */
     public function filterByTheme($theme, $comparison = null)
     {
-        if ($theme instanceof \Model\Theme\Theme) {
+        if ($theme instanceof \Application\Model\Theme\Theme) {
             return $this
                 ->addUsingAlias(NoteTableMap::COL_THEME_ID, $theme->getId(), $comparison);
         } elseif ($theme instanceof ObjectCollection) {
@@ -524,7 +524,7 @@ abstract class NoteQuery extends ModelCriteria
             return $this
                 ->addUsingAlias(NoteTableMap::COL_THEME_ID, $theme->toKeyValue('PrimaryKey', 'Id'), $comparison);
         } else {
-            throw new PropelException('filterByTheme() only accepts arguments of type \Model\Theme\Theme or Collection');
+            throw new PropelException('filterByTheme() only accepts arguments of type \Application\Model\Theme\Theme or Collection');
         }
     }
 
@@ -569,19 +569,19 @@ abstract class NoteQuery extends ModelCriteria
      *                                   to be used as main alias in the secondary query
      * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
      *
-     * @return \Model\Theme\ThemeQuery A secondary query class using the current class as primary query
+     * @return \Application\Model\Theme\ThemeQuery A secondary query class using the current class as primary query
      */
     public function useThemeQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
     {
         return $this
             ->joinTheme($relationAlias, $joinType)
-            ->useQuery($relationAlias ? $relationAlias : 'Theme', '\Model\Theme\ThemeQuery');
+            ->useQuery($relationAlias ? $relationAlias : 'Theme', '\Application\Model\Theme\ThemeQuery');
     }
 
     /**
-     * Filter the query by a related \Model\Position\Position object
+     * Filter the query by a related \Application\Model\Position\Position object
      *
-     * @param \Model\Position\Position|ObjectCollection $position The related object(s) to use as filter
+     * @param \Application\Model\Position\Position|ObjectCollection $position The related object(s) to use as filter
      * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @throws \Propel\Runtime\Exception\PropelException
@@ -590,7 +590,7 @@ abstract class NoteQuery extends ModelCriteria
      */
     public function filterByPosition($position, $comparison = null)
     {
-        if ($position instanceof \Model\Position\Position) {
+        if ($position instanceof \Application\Model\Position\Position) {
             return $this
                 ->addUsingAlias(NoteTableMap::COL_POSITION_ID, $position->getId(), $comparison);
         } elseif ($position instanceof ObjectCollection) {
@@ -601,7 +601,7 @@ abstract class NoteQuery extends ModelCriteria
             return $this
                 ->addUsingAlias(NoteTableMap::COL_POSITION_ID, $position->toKeyValue('PrimaryKey', 'Id'), $comparison);
         } else {
-            throw new PropelException('filterByPosition() only accepts arguments of type \Model\Position\Position or Collection');
+            throw new PropelException('filterByPosition() only accepts arguments of type \Application\Model\Position\Position or Collection');
         }
     }
 
@@ -646,13 +646,13 @@ abstract class NoteQuery extends ModelCriteria
      *                                   to be used as main alias in the secondary query
      * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
      *
-     * @return \Model\Position\PositionQuery A secondary query class using the current class as primary query
+     * @return \Application\Model\Position\PositionQuery A secondary query class using the current class as primary query
      */
     public function usePositionQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
     {
         return $this
             ->joinPosition($relationAlias, $joinType)
-            ->useQuery($relationAlias ? $relationAlias : 'Position', '\Model\Position\PositionQuery');
+            ->useQuery($relationAlias ? $relationAlias : 'Position', '\Application\Model\Position\PositionQuery');
     }
 
     /**

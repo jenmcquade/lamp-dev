@@ -1,16 +1,16 @@
 <?php
 
-namespace Model\Theme\Base;
+namespace Application\Model\Theme\Base;
 
 use \Exception;
 use \PDO;
-use Model\Note\Note;
-use Model\Note\NoteQuery;
-use Model\Note\Base\Note as BaseNote;
-use Model\Note\Map\NoteTableMap;
-use Model\Theme\Theme as ChildTheme;
-use Model\Theme\ThemeQuery as ChildThemeQuery;
-use Model\Theme\Map\ThemeTableMap;
+use Application\Model\Note\Note;
+use Application\Model\Note\NoteQuery;
+use Application\Model\Note\Base\Note as BaseNote;
+use Application\Model\Note\Map\NoteTableMap;
+use Application\Model\Theme\Theme as ChildTheme;
+use Application\Model\Theme\ThemeQuery as ChildThemeQuery;
+use Application\Model\Theme\Map\ThemeTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -29,14 +29,14 @@ use Propel\Runtime\Parser\AbstractParser;
  *
  *
  *
- * @package    propel.generator.Model.Theme.Base
+ * @package    propel.generator.Application.Model.Theme.Base
  */
 abstract class Theme implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\Model\\Theme\\Map\\ThemeTableMap';
+    const TABLE_MAP = '\\Application\\Model\\Theme\\Map\\ThemeTableMap';
 
 
     /**
@@ -140,7 +140,7 @@ abstract class Theme implements ActiveRecordInterface
     }
 
     /**
-     * Initializes internal state of Model\Theme\Base\Theme object.
+     * Initializes internal state of Application\Model\Theme\Base\Theme object.
      * @see applyDefaults()
      */
     public function __construct()
@@ -430,7 +430,7 @@ abstract class Theme implements ActiveRecordInterface
      * Set the value of [id] column.
      *
      * @param int $v new value
-     * @return $this|\Model\Theme\Theme The current object (for fluent API support)
+     * @return $this|\Application\Model\Theme\Theme The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -450,7 +450,7 @@ abstract class Theme implements ActiveRecordInterface
      * Set the value of [name] column.
      *
      * @param string $v new value
-     * @return $this|\Model\Theme\Theme The current object (for fluent API support)
+     * @return $this|\Application\Model\Theme\Theme The current object (for fluent API support)
      */
     public function setName($v)
     {
@@ -470,7 +470,7 @@ abstract class Theme implements ActiveRecordInterface
      * Set the value of [height] column.
      *
      * @param int $v new value
-     * @return $this|\Model\Theme\Theme The current object (for fluent API support)
+     * @return $this|\Application\Model\Theme\Theme The current object (for fluent API support)
      */
     public function setHeight($v)
     {
@@ -490,7 +490,7 @@ abstract class Theme implements ActiveRecordInterface
      * Set the value of [width] column.
      *
      * @param int $v new value
-     * @return $this|\Model\Theme\Theme The current object (for fluent API support)
+     * @return $this|\Application\Model\Theme\Theme The current object (for fluent API support)
      */
     public function setWidth($v)
     {
@@ -510,7 +510,7 @@ abstract class Theme implements ActiveRecordInterface
      * Set the value of [backgroundcolor] column.
      *
      * @param string $v new value
-     * @return $this|\Model\Theme\Theme The current object (for fluent API support)
+     * @return $this|\Application\Model\Theme\Theme The current object (for fluent API support)
      */
     public function setBackgroundColor($v)
     {
@@ -530,7 +530,7 @@ abstract class Theme implements ActiveRecordInterface
      * Set the value of [color] column.
      *
      * @param string $v new value
-     * @return $this|\Model\Theme\Theme The current object (for fluent API support)
+     * @return $this|\Application\Model\Theme\Theme The current object (for fluent API support)
      */
     public function setColor($v)
     {
@@ -614,7 +614,7 @@ abstract class Theme implements ActiveRecordInterface
             return $startcol + 6; // 6 = ThemeTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException(sprintf('Error populating %s object', '\\Model\\Theme\\Theme'), 0, $e);
+            throw new PropelException(sprintf('Error populating %s object', '\\Application\\Model\\Theme\\Theme'), 0, $e);
         }
     }
 
@@ -790,7 +790,7 @@ abstract class Theme implements ActiveRecordInterface
 
             if ($this->notesScheduledForDeletion !== null) {
                 if (!$this->notesScheduledForDeletion->isEmpty()) {
-                    \Model\Note\NoteQuery::create()
+                    \Application\Model\Note\NoteQuery::create()
                         ->filterByPrimaryKeys($this->notesScheduledForDeletion->getPrimaryKeys(false))
                         ->delete($con);
                     $this->notesScheduledForDeletion = null;
@@ -1030,7 +1030,7 @@ abstract class Theme implements ActiveRecordInterface
      *                one of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *                Defaults to TableMap::TYPE_PHPNAME.
-     * @return $this|\Model\Theme\Theme
+     * @return $this|\Application\Model\Theme\Theme
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
@@ -1045,7 +1045,7 @@ abstract class Theme implements ActiveRecordInterface
      *
      * @param  int $pos position in xml schema
      * @param  mixed $value field value
-     * @return $this|\Model\Theme\Theme
+     * @return $this|\Application\Model\Theme\Theme
      */
     public function setByPosition($pos, $value)
     {
@@ -1131,7 +1131,7 @@ abstract class Theme implements ActiveRecordInterface
      * @param string $data The source data to import from
      * @param string $keyType The type of keys the array uses.
      *
-     * @return $this|\Model\Theme\Theme The current object, for fluid interface
+     * @return $this|\Application\Model\Theme\Theme The current object, for fluid interface
      */
     public function importFrom($parser, $data, $keyType = TableMap::TYPE_PHPNAME)
     {
@@ -1250,7 +1250,7 @@ abstract class Theme implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \Model\Theme\Theme (or compatible) type.
+     * @param      object $copyObj An object of \Application\Model\Theme\Theme (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
@@ -1291,7 +1291,7 @@ abstract class Theme implements ActiveRecordInterface
      * objects.
      *
      * @param  boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return \Model\Theme\Theme Clone of current object.
+     * @return \Application\Model\Theme\Theme Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1364,7 +1364,7 @@ abstract class Theme implements ActiveRecordInterface
         $collectionClassName = NoteTableMap::getTableMap()->getCollectionClassName();
 
         $this->collNotes = new $collectionClassName;
-        $this->collNotes->setModel('\Model\Note\Note');
+        $this->collNotes->setModel('\Application\Model\Note\Note');
     }
 
     /**
@@ -1497,7 +1497,7 @@ abstract class Theme implements ActiveRecordInterface
      * through the Note foreign key attribute.
      *
      * @param  Note $l Note
-     * @return $this|\Model\Theme\Theme The current object (for fluent API support)
+     * @return $this|\Application\Model\Theme\Theme The current object (for fluent API support)
      */
     public function addNote(Note $l)
     {

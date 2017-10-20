@@ -1,9 +1,9 @@
 <?php
 
-namespace Model\Position\Map;
+namespace Application\Model\Position\Map;
 
-use Model\Position\Position;
-use Model\Position\PositionQuery;
+use Application\Model\Position\Position;
+use Application\Model\Position\PositionQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
@@ -34,7 +34,7 @@ class PositionTableMap extends TableMap
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'Model.Position.Map.PositionTableMap';
+    const CLASS_NAME = 'Application.Model.Position.Map.PositionTableMap';
 
     /**
      * The default database name for this class
@@ -49,12 +49,12 @@ class PositionTableMap extends TableMap
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\Model\\Position\\Position';
+    const OM_CLASS = '\\Application\\Model\\Position\\Position';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'Model.Position.Position';
+    const CLASS_DEFAULT = 'Application.Model.Position.Position';
 
     /**
      * The total number of columns
@@ -137,8 +137,8 @@ class PositionTableMap extends TableMap
         $this->setName('position');
         $this->setPhpName('Position');
         $this->setIdentifierQuoting(true);
-        $this->setClassName('\\Model\\Position\\Position');
-        $this->setPackage('Model.Position');
+        $this->setClassName('\\Application\\Model\\Position\\Position');
+        $this->setPackage('Application.Model.Position');
         $this->setUseIdGenerator(true);
         // columns
         $this->addPrimaryKey('id', 'Id', 'INTEGER', true, null, null);
@@ -152,7 +152,7 @@ class PositionTableMap extends TableMap
      */
     public function buildRelations()
     {
-        $this->addRelation('Note', '\\Model\\Note\\Note', RelationMap::ONE_TO_MANY, array (
+        $this->addRelation('Note', '\\Application\\Model\\Note\\Note', RelationMap::ONE_TO_MANY, array (
   0 =>
   array (
     0 => ':position_id',
@@ -357,7 +357,7 @@ class PositionTableMap extends TableMap
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \Model\Position\Position) { // it's a model object
+        } elseif ($values instanceof \Application\Model\Position\Position) { // it's a model object
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks

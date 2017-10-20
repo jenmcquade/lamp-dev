@@ -1,9 +1,9 @@
 <?php
 
-namespace Model\Note\Map;
+namespace Application\Model\Note\Map;
 
-use Model\Note\Note;
-use Model\Note\NoteQuery;
+use Application\Model\Note\Note;
+use Application\Model\Note\NoteQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\InstancePoolTrait;
@@ -34,7 +34,7 @@ class NoteTableMap extends TableMap
     /**
      * The (dot-path) name of this class
      */
-    const CLASS_NAME = 'Model.Note.Map.NoteTableMap';
+    const CLASS_NAME = 'Application.Model.Note.Map.NoteTableMap';
 
     /**
      * The default database name for this class
@@ -49,12 +49,12 @@ class NoteTableMap extends TableMap
     /**
      * The related Propel class for this table
      */
-    const OM_CLASS = '\\Model\\Note\\Note';
+    const OM_CLASS = '\\Application\\Model\\Note\\Note';
 
     /**
      * A class that can be returned by this tableMap
      */
-    const CLASS_DEFAULT = 'Model.Note.Note';
+    const CLASS_DEFAULT = 'Application.Model.Note.Note';
 
     /**
      * The total number of columns
@@ -147,8 +147,8 @@ class NoteTableMap extends TableMap
         $this->setName('note');
         $this->setPhpName('Note');
         $this->setIdentifierQuoting(true);
-        $this->setClassName('\\Model\\Note\\Note');
-        $this->setPackage('Model.Note');
+        $this->setClassName('\\Application\\Model\\Note\\Note');
+        $this->setPackage('Application.Model.Note');
         $this->setUseIdGenerator(true);
         // columns
         $this->addPrimaryKey('id', 'Id', 'INTEGER', true, null, null);
@@ -164,14 +164,14 @@ class NoteTableMap extends TableMap
      */
     public function buildRelations()
     {
-        $this->addRelation('Theme', '\\Model\\Theme\\Theme', RelationMap::MANY_TO_ONE, array (
+        $this->addRelation('Theme', '\\Application\\Model\\Theme\\Theme', RelationMap::MANY_TO_ONE, array (
   0 =>
   array (
     0 => ':theme_id',
     1 => ':id',
   ),
 ), null, null, null, false);
-        $this->addRelation('Position', '\\Model\\Position\\Position', RelationMap::MANY_TO_ONE, array (
+        $this->addRelation('Position', '\\Application\\Model\\Position\\Position', RelationMap::MANY_TO_ONE, array (
   0 =>
   array (
     0 => ':position_id',
@@ -380,7 +380,7 @@ class NoteTableMap extends TableMap
         if ($values instanceof Criteria) {
             // rename for clarity
             $criteria = $values;
-        } elseif ($values instanceof \Model\Note\Note) { // it's a model object
+        } elseif ($values instanceof \Application\Model\Note\Note) { // it's a model object
             // create criteria based on pk values
             $criteria = $values->buildPkeyCriteria();
         } else { // it's a primary key, or an array of pks

@@ -3,7 +3,7 @@ propel:
         projectDir: .
         schemaDir: .
         outputDir: .
-        phpDir: ./module/Application/src
+        phpDir: ./module
     database:
         connections:
             default:

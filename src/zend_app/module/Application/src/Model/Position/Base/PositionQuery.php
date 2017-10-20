@@ -1,13 +1,13 @@
 <?php
 
-namespace Model\Position\Base;
+namespace Application\Model\Position\Base;
 
 use \Exception;
 use \PDO;
-use Model\Note\Note;
-use Model\Position\Position as ChildPosition;
-use Model\Position\PositionQuery as ChildPositionQuery;
-use Model\Position\Map\PositionTableMap;
+use Application\Model\Note\Note;
+use Application\Model\Position\Position as ChildPosition;
+use Application\Model\Position\PositionQuery as ChildPositionQuery;
+use Application\Model\Position\Map\PositionTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -49,7 +49,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildPositionQuery rightJoinWithNote() Adds a RIGHT JOIN clause and with to the query using the Note relation
  * @method     ChildPositionQuery innerJoinWithNote() Adds a INNER JOIN clause and with to the query using the Note relation
  *
- * @method     \Model\Note\NoteQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
+ * @method     \Application\Model\Note\NoteQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
  * @method     ChildPosition findOne(ConnectionInterface $con = null) Return the first ChildPosition matching the query
  * @method     ChildPosition findOneOrCreate(ConnectionInterface $con = null) Return the first ChildPosition matching the query, or a new ChildPosition object populated from the query conditions when no match is found
@@ -80,13 +80,13 @@ abstract class PositionQuery extends ModelCriteria
     protected $entityNotFoundExceptionClass = '\\Propel\\Runtime\\Exception\\EntityNotFoundException';
 
     /**
-     * Initializes internal state of \Model\Position\Base\PositionQuery object.
+     * Initializes internal state of \Application\Model\Position\Base\PositionQuery object.
      *
      * @param     string $dbName The database name
      * @param     string $modelName The phpName of a model, e.g. 'Book'
      * @param     string $modelAlias The alias for the model in this query, e.g. 'b'
      */
-    public function __construct($dbName = 'default', $modelName = '\\Model\\Position\\Position', $modelAlias = null)
+    public function __construct($dbName = 'default', $modelName = '\\Application\\Model\\Position\\Position', $modelAlias = null)
     {
         parent::__construct($dbName, $modelName, $modelAlias);
     }
@@ -425,16 +425,16 @@ abstract class PositionQuery extends ModelCriteria
     }
 
     /**
-     * Filter the query by a related \Model\Note\Note object
+     * Filter the query by a related \Application\Model\Note\Note object
      *
-     * @param \Model\Note\Note|ObjectCollection $note the related object to use as filter
+     * @param \Application\Model\Note\Note|ObjectCollection $note the related object to use as filter
      * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
      *
      * @return ChildPositionQuery The current query, for fluid interface
      */
     public function filterByNote($note, $comparison = null)
     {
-        if ($note instanceof \Model\Note\Note) {
+        if ($note instanceof \Application\Model\Note\Note) {
             return $this
                 ->addUsingAlias(PositionTableMap::COL_ID, $note->getPositionId(), $comparison);
         } elseif ($note instanceof ObjectCollection) {
@@ -443,7 +443,7 @@ abstract class PositionQuery extends ModelCriteria
                 ->filterByPrimaryKeys($note->getPrimaryKeys())
                 ->endUse();
         } else {
-            throw new PropelException('filterByNote() only accepts arguments of type \Model\Note\Note or Collection');
+            throw new PropelException('filterByNote() only accepts arguments of type \Application\Model\Note\Note or Collection');
         }
     }
 
@@ -488,13 +488,13 @@ abstract class PositionQuery extends ModelCriteria
      *                                   to be used as main alias in the secondary query
      * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
      *
-     * @return \Model\Note\NoteQuery A secondary query class using the current class as primary query
+     * @return \Application\Model\Note\NoteQuery A secondary query class using the current class as primary query
      */
     public function useNoteQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
     {
         return $this
             ->joinNote($relationAlias, $joinType)
-            ->useQuery($relationAlias ? $relationAlias : 'Note', '\Model\Note\NoteQuery');
+            ->useQuery($relationAlias ? $relationAlias : 'Note', '\Application\Model\Note\NoteQuery');
     }
 
     /**

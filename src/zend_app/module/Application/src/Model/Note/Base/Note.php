@@ -1,16 +1,16 @@
 <?php
 
-namespace Model\Note\Base;
+namespace Application\Model\Note\Base;
 
 use \DateTime;
 use \Exception;
 use \PDO;
-use Model\Note\NoteQuery as ChildNoteQuery;
-use Model\Note\Map\NoteTableMap;
-use Model\Position\Position;
-use Model\Position\PositionQuery;
-use Model\Theme\Theme;
-use Model\Theme\ThemeQuery;
+use Application\Model\Note\NoteQuery as ChildNoteQuery;
+use Application\Model\Note\Map\NoteTableMap;
+use Application\Model\Position\Position;
+use Application\Model\Position\PositionQuery;
+use Application\Model\Theme\Theme;
+use Application\Model\Theme\ThemeQuery;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -29,14 +29,14 @@ use Propel\Runtime\Util\PropelDateTime;
  *
  *
  *
- * @package    propel.generator.Model.Note.Base
+ * @package    propel.generator.Application.Model.Note.Base
  */
 abstract class Note implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\Model\\Note\\Map\\NoteTableMap';
+    const TABLE_MAP = '\\Application\\Model\\Note\\Map\\NoteTableMap';
 
 
     /**
@@ -126,7 +126,7 @@ abstract class Note implements ActiveRecordInterface
     protected $alreadyInSave = false;
 
     /**
-     * Initializes internal state of Model\Note\Base\Note object.
+     * Initializes internal state of Application\Model\Note\Base\Note object.
      */
     public function __construct()
     {
@@ -424,7 +424,7 @@ abstract class Note implements ActiveRecordInterface
      * Set the value of [id] column.
      *
      * @param int $v new value
-     * @return $this|\Model\Note\Note The current object (for fluent API support)
+     * @return $this|\Application\Model\Note\Note The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -444,7 +444,7 @@ abstract class Note implements ActiveRecordInterface
      * Set the value of [title] column.
      *
      * @param string $v new value
-     * @return $this|\Model\Note\Note The current object (for fluent API support)
+     * @return $this|\Application\Model\Note\Note The current object (for fluent API support)
      */
     public function setTitle($v)
     {
@@ -464,7 +464,7 @@ abstract class Note implements ActiveRecordInterface
      * Set the value of [content] column.
      *
      * @param string $v new value
-     * @return $this|\Model\Note\Note The current object (for fluent API support)
+     * @return $this|\Application\Model\Note\Note The current object (for fluent API support)
      */
     public function setContent($v)
     {
@@ -484,7 +484,7 @@ abstract class Note implements ActiveRecordInterface
      * Set the value of [theme_id] column.
      *
      * @param int $v new value
-     * @return $this|\Model\Note\Note The current object (for fluent API support)
+     * @return $this|\Application\Model\Note\Note The current object (for fluent API support)
      */
     public function setThemeId($v)
     {
@@ -508,7 +508,7 @@ abstract class Note implements ActiveRecordInterface
      * Set the value of [position_id] column.
      *
      * @param int $v new value
-     * @return $this|\Model\Note\Note The current object (for fluent API support)
+     * @return $this|\Application\Model\Note\Note The current object (for fluent API support)
      */
     public function setPositionId($v)
     {
@@ -533,7 +533,7 @@ abstract class Note implements ActiveRecordInterface
      *
      * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
      *               Empty strings are treated as NULL.
-     * @return $this|\Model\Note\Note The current object (for fluent API support)
+     * @return $this|\Application\Model\Note\Note The current object (for fluent API support)
      */
     public function setCreatedAt($v)
     {
@@ -615,7 +615,7 @@ abstract class Note implements ActiveRecordInterface
             return $startcol + 6; // 6 = NoteTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException(sprintf('Error populating %s object', '\\Model\\Note\\Note'), 0, $e);
+            throw new PropelException(sprintf('Error populating %s object', '\\Application\\Model\\Note\\Note'), 0, $e);
         }
     }
 
@@ -1058,7 +1058,7 @@ abstract class Note implements ActiveRecordInterface
      *                one of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *                Defaults to TableMap::TYPE_PHPNAME.
-     * @return $this|\Model\Note\Note
+     * @return $this|\Application\Model\Note\Note
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
@@ -1073,7 +1073,7 @@ abstract class Note implements ActiveRecordInterface
      *
      * @param  int $pos position in xml schema
      * @param  mixed $value field value
-     * @return $this|\Model\Note\Note
+     * @return $this|\Application\Model\Note\Note
      */
     public function setByPosition($pos, $value)
     {
@@ -1159,7 +1159,7 @@ abstract class Note implements ActiveRecordInterface
      * @param string $data The source data to import from
      * @param string $keyType The type of keys the array uses.
      *
-     * @return $this|\Model\Note\Note The current object, for fluid interface
+     * @return $this|\Application\Model\Note\Note The current object, for fluid interface
      */
     public function importFrom($parser, $data, $keyType = TableMap::TYPE_PHPNAME)
     {
@@ -1278,7 +1278,7 @@ abstract class Note implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \Model\Note\Note (or compatible) type.
+     * @param      object $copyObj An object of \Application\Model\Note\Note (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
@@ -1305,7 +1305,7 @@ abstract class Note implements ActiveRecordInterface
      * objects.
      *
      * @param  boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return \Model\Note\Note Clone of current object.
+     * @return \Application\Model\Note\Note Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1322,7 +1322,7 @@ abstract class Note implements ActiveRecordInterface
      * Declares an association between this object and a Theme object.
      *
      * @param  Theme $v
-     * @return $this|\Model\Note\Note The current object (for fluent API support)
+     * @return $this|\Application\Model\Note\Note The current object (for fluent API support)
      * @throws PropelException
      */
     public function setTheme(Theme $v = null)
@@ -1373,7 +1373,7 @@ abstract class Note implements ActiveRecordInterface
      * Declares an association between this object and a Position object.
      *
      * @param  Position $v
-     * @return $this|\Model\Note\Note The current object (for fluent API support)
+     * @return $this|\Application\Model\Note\Note The current object (for fluent API support)
      * @throws PropelException
      */
     public function setPosition(Position $v = null)

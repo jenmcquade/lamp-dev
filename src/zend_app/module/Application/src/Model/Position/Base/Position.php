@@ -1,16 +1,16 @@
 <?php
 
-namespace Model\Position\Base;
+namespace Application\Model\Position\Base;
 
 use \Exception;
 use \PDO;
-use Model\Note\Note;
-use Model\Note\NoteQuery;
-use Model\Note\Base\Note as BaseNote;
-use Model\Note\Map\NoteTableMap;
-use Model\Position\Position as ChildPosition;
-use Model\Position\PositionQuery as ChildPositionQuery;
-use Model\Position\Map\PositionTableMap;
+use Application\Model\Note\Note;
+use Application\Model\Note\NoteQuery;
+use Application\Model\Note\Base\Note as BaseNote;
+use Application\Model\Note\Map\NoteTableMap;
+use Application\Model\Position\Position as ChildPosition;
+use Application\Model\Position\PositionQuery as ChildPositionQuery;
+use Application\Model\Position\Map\PositionTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
@@ -29,14 +29,14 @@ use Propel\Runtime\Parser\AbstractParser;
  *
  *
  *
- * @package    propel.generator.Model.Position.Base
+ * @package    propel.generator.Application.Model.Position.Base
  */
 abstract class Position implements ActiveRecordInterface
 {
     /**
      * TableMap class name
      */
-    const TABLE_MAP = '\\Model\\Position\\Map\\PositionTableMap';
+    const TABLE_MAP = '\\Application\\Model\\Position\\Map\\PositionTableMap';
 
 
     /**
@@ -114,7 +114,7 @@ abstract class Position implements ActiveRecordInterface
     protected $notesScheduledForDeletion = null;
 
     /**
-     * Initializes internal state of Model\Position\Base\Position object.
+     * Initializes internal state of Application\Model\Position\Base\Position object.
      */
     public function __construct()
     {
@@ -382,7 +382,7 @@ abstract class Position implements ActiveRecordInterface
      * Set the value of [id] column.
      *
      * @param int $v new value
-     * @return $this|\Model\Position\Position The current object (for fluent API support)
+     * @return $this|\Application\Model\Position\Position The current object (for fluent API support)
      */
     public function setId($v)
     {
@@ -402,7 +402,7 @@ abstract class Position implements ActiveRecordInterface
      * Set the value of [xpos] column.
      *
      * @param int $v new value
-     * @return $this|\Model\Position\Position The current object (for fluent API support)
+     * @return $this|\Application\Model\Position\Position The current object (for fluent API support)
      */
     public function setXpos($v)
     {
@@ -422,7 +422,7 @@ abstract class Position implements ActiveRecordInterface
      * Set the value of [ypos] column.
      *
      * @param int $v new value
-     * @return $this|\Model\Position\Position The current object (for fluent API support)
+     * @return $this|\Application\Model\Position\Position The current object (for fluent API support)
      */
     public function setYpos($v)
     {
@@ -442,7 +442,7 @@ abstract class Position implements ActiveRecordInterface
      * Set the value of [zpos] column.
      *
      * @param int $v new value
-     * @return $this|\Model\Position\Position The current object (for fluent API support)
+     * @return $this|\Application\Model\Position\Position The current object (for fluent API support)
      */
     public function setZpos($v)
     {
@@ -516,7 +516,7 @@ abstract class Position implements ActiveRecordInterface
             return $startcol + 4; // 4 = PositionTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
-            throw new PropelException(sprintf('Error populating %s object', '\\Model\\Position\\Position'), 0, $e);
+            throw new PropelException(sprintf('Error populating %s object', '\\Application\\Model\\Position\\Position'), 0, $e);
         }
     }
 
@@ -692,7 +692,7 @@ abstract class Position implements ActiveRecordInterface
 
             if ($this->notesScheduledForDeletion !== null) {
                 if (!$this->notesScheduledForDeletion->isEmpty()) {
-                    \Model\Note\NoteQuery::create()
+                    \Application\Model\Note\NoteQuery::create()
                         ->filterByPrimaryKeys($this->notesScheduledForDeletion->getPrimaryKeys(false))
                         ->delete($con);
                     $this->notesScheduledForDeletion = null;
@@ -912,7 +912,7 @@ abstract class Position implements ActiveRecordInterface
      *                one of the class type constants TableMap::TYPE_PHPNAME, TableMap::TYPE_CAMELNAME
      *                TableMap::TYPE_COLNAME, TableMap::TYPE_FIELDNAME, TableMap::TYPE_NUM.
      *                Defaults to TableMap::TYPE_PHPNAME.
-     * @return $this|\Model\Position\Position
+     * @return $this|\Application\Model\Position\Position
      */
     public function setByName($name, $value, $type = TableMap::TYPE_PHPNAME)
     {
@@ -927,7 +927,7 @@ abstract class Position implements ActiveRecordInterface
      *
      * @param  int $pos position in xml schema
      * @param  mixed $value field value
-     * @return $this|\Model\Position\Position
+     * @return $this|\Application\Model\Position\Position
      */
     public function setByPosition($pos, $value)
     {
@@ -1001,7 +1001,7 @@ abstract class Position implements ActiveRecordInterface
      * @param string $data The source data to import from
      * @param string $keyType The type of keys the array uses.
      *
-     * @return $this|\Model\Position\Position The current object, for fluid interface
+     * @return $this|\Application\Model\Position\Position The current object, for fluid interface
      */
     public function importFrom($parser, $data, $keyType = TableMap::TYPE_PHPNAME)
     {
@@ -1114,7 +1114,7 @@ abstract class Position implements ActiveRecordInterface
      * If desired, this method can also make copies of all associated (fkey referrers)
      * objects.
      *
-     * @param      object $copyObj An object of \Model\Position\Position (or compatible) type.
+     * @param      object $copyObj An object of \Application\Model\Position\Position (or compatible) type.
      * @param      boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
      * @param      boolean $makeNew Whether to reset autoincrement PKs and make the object new.
      * @throws PropelException
@@ -1153,7 +1153,7 @@ abstract class Position implements ActiveRecordInterface
      * objects.
      *
      * @param  boolean $deepCopy Whether to also copy all rows that refer (by fkey) to the current row.
-     * @return \Model\Position\Position Clone of current object.
+     * @return \Application\Model\Position\Position Clone of current object.
      * @throws PropelException
      */
     public function copy($deepCopy = false)
@@ -1226,7 +1226,7 @@ abstract class Position implements ActiveRecordInterface
         $collectionClassName = NoteTableMap::getTableMap()->getCollectionClassName();
 
         $this->collNotes = new $collectionClassName;
-        $this->collNotes->setModel('\Model\Note\Note');
+        $this->collNotes->setModel('\Application\Model\Note\Note');
     }
 
     /**
@@ -1359,7 +1359,7 @@ abstract class Position implements ActiveRecordInterface
      * through the Note foreign key attribute.
      *
      * @param  Note $l Note
-     * @return $this|\Model\Position\Position The current object (for fluent API support)
+     * @return $this|\Application\Model\Position\Position The current object (for fluent API support)
      */
     public function addNote(Note $l)
     {
