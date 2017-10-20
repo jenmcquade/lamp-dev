@@ -1,0 +1,16 @@
+propel:
+    paths:
+        projectDir: .
+        schemaDir: .
+        outputDir: .
+        phpDir: ./module/Application/src
+    database:
+        connections:
+            default:
+                adapter: mysql
+                dsn: mysql:host=db;port=3306;dbname=mysql_dev
+                user: mysql_dev
+                password: mysql_dev
+                settings:
+                    charset: utf8
+                    

@@ -31,3 +31,33 @@ div.container a.navbar-brand > img {
     margin-right: 4px;
     margin-top: -2px;
 }
+
+select {
+    padding: 8px;
+}
+
+#note :last-child {
+    margin-top: 10px;
+}
+
+.panel-heading a {
+    display: block;
+}
+
+.panel-heading a:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e114";
+    float: right;
+    transition: all 0.5s;
+
+ }
+ 
+ .panel-heading.active a:before {
+
+ } 
+
+ .panel-heading.collapsed a:before {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+ }

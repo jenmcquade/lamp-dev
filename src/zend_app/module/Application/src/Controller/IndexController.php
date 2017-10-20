@@ -9,11 +9,20 @@ namespace Application\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Application\Controller\ThemeController;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+        $themeController = new ThemeController();
+        $themes = $themeController->listAllAction();
+        
+        $view = new ViewModel();
+        $view->data = array(
+            $themes->getVariables(),
+        );
+
+        return $view;
     }
 }

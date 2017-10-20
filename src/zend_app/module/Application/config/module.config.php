@@ -34,11 +34,33 @@ return [
                     ],
                 ],
             ],
+            'note' => [
+                'type'  => Segment::class,
+                'options' => [
+                    'route'   => '/note[/:action]',
+                    'defaults' => [
+                        'controller' => Controller\NotesController::class,
+                        'action'     => 'list-all'
+                    ]
+                ]
+            ],
+            'theme' => [
+                'type'  => Segment::class,
+                'options' => [
+                    'route'   => '/theme[/:action]',
+                    'defaults' => [
+                        'controller' => Controller\ThemeController::class,
+                        'action'     => 'list-all'
+                    ]
+                ]
+            ]
         ],
     ],
     'controllers' => [
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
+            Controller\NotesController::class => InvokableFactory::class,
+            Controller\ThemeController::class => InvokableFactory::class,
         ],
     ],
     'view_manager' => [
@@ -56,5 +78,8 @@ return [
         'template_path_stack' => [
             __DIR__ . '/../view',
         ],
+        'strategies' => [
+            'ViewJsonStrategy',
+        ]
     ],
 ];

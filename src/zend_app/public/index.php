@@ -1,7 +1,10 @@
 <?php
 
+header("Access-Control-Allow-Origin: *");
+
 use Zend\Mvc\Application;
 use Zend\Stdlib\ArrayUtils;
+use Propel\Runtime\Propel as Propel;
 
 /**
  * This makes our life easier when dealing with paths. Everything is relative
