@@ -66,19 +66,18 @@ To get you up and running with MVC, a composer.json configuration file is includ
 1. run `docker exec -ti bash {CONTAINER ID}` to launch an interactive session in the PHP Docker container.
 1. `cd /var/www/html` to get to project sources folder, containing composer.json.
 1. run `ccomposer install`
-##### Running the Zend Framekwork Skeleton App
-1. `cd /var/www/html/zend_app` to enter the Zend Skelton app directory.
-1. run `composer install` to install vendor dependencies.
-1. Open http://localhost:8080
 
 #### Propel ORM for model development comes preconfigured
 You can use Propel both within the _src_ project directory and inside of the Zend MVC Skeleton App.  It is available globally after running `composer install` in the _src_ project directory or locally after running `composer install` inside the _src/zend_app_ directory.
-1. `cd /var/www/html/zend_app` to enter the Zend Skeleton app directory.
+1. Copy the *src/composer.json* file into your project directory.
+1. run `docker ps` to see a list of open Docker containers.  Find the container ID of your open PHP container with the image *bistormllc/php*.  Copy the container ID.  
+1. run `docker exec -ti bash {CONTAINER ID}` to launch an interactive session in the PHP Docker container.
+1. `cd /var/www/html/{your_project}`
 1. run `composer install` to install project dependencies.
 1. run `propel init` to initialize schema and inheritance classes to manage CRUD operations.
-1. Each time you will update your schema, you should run `propel sql:build` and `propel sql:insert`.
+1. Each time you will update your schema, you should run `propel sql:build` and `propel sql:insert`.  Use `propel model:build` to generate Model classes based on your *schema.xml* file.
 
 ### Requirements
 1. Docker: https://docs.docker.com/engine/installation/
 1. Visual Studio Code (for debugging): https://code.visualstudio.com/docs/setup/setup-overview
-
+1. NodeJS with NPM (for running the sample Note Taking app with Hot Module Reloading): https://nodejs.org/en/download/
