@@ -1,9 +1,9 @@
 # In Progress: React Apache MySql PHP Development Environment
 Docker Compose setup for initiating a LAMP environment with XDEBUG enabled, and built to accomodate React with Redux, with Hot Module Reloading (HMR) using Browsersync as a proxy, implementing the Webpack Hot Middleware module.  Sample Zend MVC app is pre-configured for Propel ORM and building with Docker.
 
-### To create a LAMP environment with XDebug enabled, follow these steps
+### To create a RAMP environment with XDebug enabled, follow these steps
 1. Clone this project into your working directory
-`git clone https://github.com/jenmcquade/lamp-dev.git`
+`git clone https://github.com/jenmcquade/ramp-dev.git`
 1. Modify line 37 of docker-compose.yml to your host IP address
 `PHP_XDEBUG_REMOTE_HOST: "XXX.XXX.XXX.XXX"`
 1. _[Optional]_ If you have Visual Studio Code installed, Modify line 14 of .vscode/launch.json to the full directory path of the project's _src_ folder
