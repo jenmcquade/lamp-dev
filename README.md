@@ -1,4 +1,4 @@
-# In Progress: React Apache MySql PHP Development Environment
+# No longer in development: React Apache MySql PHP Development Environment
 Docker Compose setup for initiating a LAMP environment with XDEBUG enabled, and built to accomodate React with Redux, with Hot Module Reloading (HMR) using Browsersync as a proxy, implementing the Webpack Hot Middleware module.  Sample Zend MVC app is pre-configured for Propel ORM and building with Docker.
 
 ### To create a fresh LAMP environment with XDebug enabled (without React), follow these steps
